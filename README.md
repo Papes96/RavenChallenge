@@ -63,8 +63,8 @@ Some potential future improvements for the app include:
 
 <h2 align="left">How app works:</h2>
 
-<p>Gif:<br></p>
-![](https://github.com/Papes96/RavenChallenge/tree/master/nyt1.gif)
+![nyt1](https://github.com/Papes96/RavenChallenge/assets/25874890/dc1eba2b-6865-42c6-8a95-007a92285884)
+
 
 
 
