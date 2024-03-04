@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.raven.home.presentation.viewmodel.HomeViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/popular_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:drawableLeft="@drawable/expand_more_24px"
+            android:ellipsize="end"
+            android:gravity="center_vertical|right"
+            android:maxLines="1"
+            android:paddingEnd="2dp"
+            android:textColor="@android:color/black"
+            android:text="@{viewModel.state.data.type.printableName}"
+            app:layout_constraintEnd_toStartOf="@id/period_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Popular" />
+
+        <Button
+            android:id="@+id/period_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:drawableEnd="@drawable/expand_more_24px"
+            android:ellipsize="end"
+            android:gravity="center_vertical|left"
+            android:maxLines="1"
+            android:paddingStart="2dp"
+            android:text="@{viewModel.state.data.period.printableName}"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toStartOf="@id/refresh_button"
+            app:layout_constraintStart_toEndOf="@id/popular_button"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Period" />
+
+        <Button
+            android:id="@+id/refresh_button"
+            android:layout_width="48dp"
+            android:layout_height="0dp"
+            android:background="@drawable/button_background"
+            android:drawableEnd="@drawable/refresh_24px"
+            android:paddingHorizontal="12dp"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="@id/period_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/period_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/period_button"
+            tools:listitem="@layout/article_item" />
+
+        <ViewStub
+            android:id="@+id/empty_stub"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout="@layout/home_empty"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/period_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

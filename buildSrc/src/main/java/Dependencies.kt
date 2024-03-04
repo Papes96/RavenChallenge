@@ -1,6 +1,15 @@
 import Dependencies.appCompat
 import Dependencies.coroutines
 import Dependencies.espressoCore
+import Dependencies.mockito
+import Dependencies.mockitoKotlin
+import Dependencies.mockitoInline
+import Dependencies.robolectric
+import Dependencies.fragment
+import Dependencies.roomCompiler
+import Dependencies.roomRuntime
+import Dependencies.roomKtx
+import Dependencies.picasso
 import Dependencies.extJunit
 import Dependencies.gson
 import Dependencies.hilt
@@ -8,7 +17,7 @@ import Dependencies.hiltCompiler
 import Dependencies.junit
 import Dependencies.kotlinCore
 import Dependencies.lifeCycle
-import Dependencies.logginInterceptor
+import Dependencies.loggingInterceptor
 import Dependencies.material
 import Dependencies.navigationFragment
 import Dependencies.navigationUI
@@ -31,12 +40,18 @@ object Dependencies {
     const val hiltPlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
     const val lifeCycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifeCycle}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
+    const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 
     /** Testing **/
 
     const val junit = "junit:junit:${Versions.junit}"
-    const val extJunit = "androidx.ext.test.ext:junit:${Versions.extJunit}"
-    const val espressoCore = "androidx.ext.test.espresso:espresso-core:${Versions.espresso}"
+    const val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
+    const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
+    const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
+    const val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoInline}"
+    const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
 
     /** Network **/
 
@@ -44,7 +59,13 @@ object Dependencies {
     val okHttp by lazy { "com.squareup.okhttp3:okhttp:${Versions.okhttpVersion}" }
     val retrofit by lazy { "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}" }
     val retrofitConverter by lazy { "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}" }
-    val logginInterceptor by lazy { "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpVersion}" }
+    val loggingInterceptor by lazy { "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpVersion}" }
+
+    /** Storage **/
+
+    val roomRuntime by lazy { "androidx.room:room-runtime:${Versions.room}" }
+    val roomCompiler by lazy { "androidx.room:room-compiler:${Versions.room}" }
+    val roomKtx by lazy { "androidx.room:room-ktx:${Versions.room}" }
 
     /** DI **/
 
@@ -65,10 +86,16 @@ fun DependencyHandler.general() {
     implementation(lifeCycle)
     implementation(coroutines)
     implementation(kotlinCore)
+    implementation(fragment)
+    implementation(picasso)
 }
 
 fun DependencyHandler.testing() {
     testImplementation(junit)
+    testImplementation(mockito)
+    testImplementation(mockitoInline)
+    testImplementation(mockitoKotlin)
+    testImplementation(robolectric)
     androidTestImplementation(extJunit)
     androidTestImplementation(espressoCore)
 }
@@ -77,8 +104,14 @@ fun DependencyHandler.network() {
     implementation(gson)
     implementation(okHttp)
     implementation(retrofit)
-    implementation(logginInterceptor)
+    implementation(loggingInterceptor)
     implementation(retrofitConverter)
+}
+
+fun DependencyHandler.storage() {
+    implementation(roomRuntime)
+    implementation(roomKtx)
+    kapt(roomCompiler)
 }
 
 fun DependencyHandler.di() {

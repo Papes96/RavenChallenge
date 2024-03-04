@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_image_description">Exclamation Icon Surrounded by a circle</string>
+    <string name="error_title">Ooops!</string>
+    <string name="error_subtitle">An error has occurred</string>
+
+    <string name="empty_image_description">Magnifying glass next to an X</string>
+    <string name="empty_title">Whoops!</string>
+    <string name="empty_subtitle">We couldn\'t retrieve any results.</string>
+
+    <string name="article_image_description">Article Image</string>
+    <string name="article_cto">Go to article</string>
+
+    <string name="w_loading">Loading</string>
+    <string name="w_popular">Popular</string>
+    <string name="w_period">Period</string>
+
+    <string name="no_internet_connection">You are offline</string>
+
+</resources>

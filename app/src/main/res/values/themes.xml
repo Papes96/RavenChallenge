@@ -1,9 +1,13 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.RavenNews" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/my_light_primary</item>
     </style>
 
     <style name="Theme.RavenNews" parent="Base.Theme.RavenNews" />
+
+    <!-- Sample color definitions -->
+    <color name="my_light_primary">#999999</color>
+
 </resources>

@@ -6,6 +6,13 @@ plugins {
 
 android {
     namespace = ProjectConfig.appId
+
+    viewBinding.enable = true
+    dataBinding.enable = true
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {

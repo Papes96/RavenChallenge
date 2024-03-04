@@ -2,14 +2,19 @@ import ext.implementation
 
 plugins {
     id(ModulePlugin.MODULE_NAME)
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
     namespace = "com.raven.home"
 
-    buildFeatures {
-        dataBinding = true
-        viewBinding = true
+    viewBinding.enable = true
+    dataBinding.enable = true
+
+    buildFeatures.buildConfig = true
+
+    defaultConfig {
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 }
 
@@ -18,6 +23,8 @@ dependencies {
     general()
     testing()
     network()
+    storage()
+    navigation()
 
     implementation(project(":core"))
 }

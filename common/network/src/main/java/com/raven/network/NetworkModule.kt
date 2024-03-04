@@ -19,17 +19,17 @@ class NetworkModule {
     fun provideOkHttpClient(): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        return OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
+        return OkHttpClient.Builder()
+            .addInterceptor(HeaderInterceptor())
+            .addInterceptor(loggingInterceptor)
+            .build()
     }
 
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder().baseUrl(BASE_URL)
+        return Retrofit.Builder().baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build()
     }
 
-    companion object {
-        private const val BASE_URL = ""
-    }
 }
